@@ -24,7 +24,7 @@ All deployment issues have been fixed! Here's what was changed:
 ├─ VITE_API_URL=http://localhost:5000
 └─ VITE_SOCKET_URL=http://localhost:5000
 
-.env.production (Vercel Deployment)
+.env.production (Vercel Deployment - NOW COMMITTED)
 ├─ VITE_API_URL=https://waitz.onrender.com
 └─ VITE_SOCKET_URL=https://waitz.onrender.com
 ```
@@ -56,13 +56,9 @@ All deployment issues have been fixed! Here's what was changed:
 ## Deployment Steps
 
 ### For Vercel (Frontend):
-1. Push code to GitHub
-2. In Vercel project settings, add environment variables:
-   ```
-   VITE_API_URL=https://waitz.onrender.com
-   VITE_SOCKET_URL=https://waitz.onrender.com
-   ```
-3. Vercel auto-deploys on push
+1. ✅ **Code is pushed** - Vercel will auto-deploy on push
+2. ✅ **Environment variables are set** - `.env.production` is now committed to repo
+3. ✅ **No manual config needed** - Vercel reads the committed `.env.production` file
 
 **Optional: Add Audio Notification**
 1. Download a notification sound (MP3) from freesound.org
@@ -114,7 +110,7 @@ VITE_SOCKET_URL=https://waitz.onrender.com
 ```
 frontend/
 ├── .env.local              (local dev)
-├── .env.production         (production - Vercel)
+├── .env.production         (production - NOW COMMITTED)
 ├── public/
 │   ├── chime.mp3          (optional audio asset)
 │   └── README.md          (instructions)
@@ -131,3 +127,9 @@ frontend/
 ---
 
 **Your app should now work perfectly on Vercel + Render!** 🚀
+
+## Latest Fix (May 9, 2026)
+- **Committed `.env.production`** to repository so Vercel can read it
+- **Updated `.gitignore`** to allow production env files (only public URLs)
+- **Added debug logging temporarily** (now removed)
+- **Pushed all changes** - Vercel should auto-redeploy
