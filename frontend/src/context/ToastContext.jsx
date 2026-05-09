@@ -9,14 +9,25 @@ export const useToast = () => useContext(ToastContext);
 
 export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
-  const notificationAudio = useRef(new Audio('/chime.mp3')); // Assuming chime.mp3 exists or will be added
+  const notificationAudio = useRef(new Audio('/chime.mp3'));
+  const [audioLoaded, setAudioLoaded] = useState(false);
+
+  // Try to load audio on mount
+  React.useEffect(() => {
+    if (notificationAudio.current) {
+      notificationAudio.current.oncanplaythrough = () => setAudioLoaded(true);
+      notificationAudio.current.onerror = () => {
+        console.log('Audio file not found, continuing without notification sound');
+      };
+    }
+  }, []);
 
   const addToast = (message, type = 'success') => {
     const id = Date.now();
     setToasts(prev => [...prev, { id, message, type }]);
     
     // Play sound for important alerts
-    if (type !== 'info') {
+    if (type !== 'info' && audioLoaded) {
         notificationAudio.current.currentTime = 0;
         notificationAudio.current.play().catch(e => console.log("Audio play failed", e));
     }

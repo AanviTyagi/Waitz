@@ -13,13 +13,30 @@ const app = express();
 const server = http.createServer(app);
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://waitz.vercel.app',
+    'https://waitz.onrender.com'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 
 // Socket.io Setup
 const io = new Server(server, {
-  cors: { origin: "*", methods: ["GET", "POST"] }
+  cors: { 
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://waitz.vercel.app',
+      'https://waitz.onrender.com'
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+  }
 });
 
 // Database Connection

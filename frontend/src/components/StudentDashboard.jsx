@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import io from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -11,9 +10,10 @@ import {
 import { useToast } from '../context/ToastContext';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { axiosInstance as axios, SOCKET_URL } from '../services/api';
 
-// Enhanced styles and icons
-const socket = io('/', { transports: ['websocket'] });
+// Socket.io connection to backend
+const socket = io(SOCKET_URL, { transports: ['websocket'] });
 
 
 const StudentDashboard = () => {

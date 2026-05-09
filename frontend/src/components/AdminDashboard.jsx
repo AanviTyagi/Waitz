@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
 import { FaSignOutAlt, FaBullhorn, FaCheckDouble, FaUserCircle, FaKeyboard, FaChair, FaSpinner } from 'react-icons/fa';
 import { useToast } from '../context/ToastContext';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { axiosInstance as axios, SOCKET_URL } from '../services/api';
 
-const socket = io('/', { transports: ['websocket'] });
+const socket = io(SOCKET_URL, { transports: ['websocket'] });
 
 const AdminDashboard = () => {
   const [queues, setQueues] = useState([]);

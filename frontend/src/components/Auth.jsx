@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import AntiGravityBackground from './AntiGravityBackground';
-import axios from 'axios';
+import { axiosInstance as axios } from '../services/api';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaUser, FaIdCard, FaBuilding, FaArrowLeft, FaSpinner, FaEye, FaEyeSlash } from 'react-icons/fa';
 import gsap from 'gsap';

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import io from 'socket.io-client';
+import { axiosInstance as axios, SOCKET_URL } from '../services/api';
 
-const socket = io('/', {
+const socket = io(SOCKET_URL, {
   transports: ['websocket'], // explicit setup
 });
 
