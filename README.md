@@ -132,4 +132,8 @@ The app should now be running at `http://localhost:5173` (Frontend) and `http://
 
 ---
 
+##Testing puropose use these credentials:
+Email: testing@gmail.com
+Password: 12345678
+
 *Built with ❤️ for efficient campus life.*
